@@ -84,7 +84,7 @@ const transactions: FullTransaction[] = [
 console.log(getFirstItem(transactions));
 console.log(getFirstItem(["Apple", "Banana", "Lemon"]));
 console.log(getFirstItem([35, 40, 50]));
-*/
+
 interface BaseTransaction {
   id: number;
   amount: number;
@@ -131,24 +131,121 @@ const transaction: MpesaApiResponse<FullTransaction[]> = {
 console.log(mpesaResponse);
 console.log(transaction);
 
+*/
+
+/*type TransactionType = "send" | "withdraw";
+interface BaseTransaction {
+  id: number;
+  amount: number;
+}
+
+interface MpesaDetails {
+  name: string;
+  fee: number;
+}
+
+type FullTransaction = BaseTransaction & MpesaDetails;
+
+const details: FullTransaction = {
+  name: "Esther",
+  id: 1,
+  amount: 3000,
+  fee: 13,
+};
+console.log(details);*/
+
+/*
+   PICK: Allows to select specific  property from type
+type TransactionSummary = Pick<FullTransaction, "id" | "amount">
+const details: TransactionSummary = {
+  id: 1,
+amount: 3000
+}
+
+console.log(details); */
+
+/*
+OMITS: Allows to remove a specific property from the type 
 
 
+type TransactionWithoutFee = Omit<FullTransaction, "fee">
+
+const details: TransactionWithoutFee = {
+  name: "Esther Maina",
+  id: 2,
+  amount: 15000,
+  
+}
+console.log(details);*/
 
 
+/*
+RECORD: Creates an object type with specific keys & values types.
+
+type FeeByType = Record<TransactionType, number>
+
+const fee: FeeByType = {
+  send: 33,
+  withdraw: 13
+}
+console.log(fee);*/
+/*
+
+PARTIAL: Allows to make all properties optional
+
+type PartialTransaction = Partial<FullTransaction>
+
+ const detailsUpdate: PartialTransaction = {
+   fee: 15
+}
+
+console.log(detailsUpdate);*/
 
 
+type TransactionType = "send" | "withdraw";
+interface BaseTransaction {
+  id: number
+  amount: number
+}
 
+interface MpesaDetails {
+  name: string
+  transactionType: TransactionType
+  fee: number
+}
 
+type FullTransaction = BaseTransaction & MpesaDetails;
 
+type PartialTransaction = Partial<FullTransaction>
 
+const transaction: PartialTransaction = {
+  amount: 3000
+}
+console.log(transaction);
 
+type TransactionSummary = Pick<FullTransaction, "id" | "transactionType">
+ const summary: TransactionSummary = {
+   id: 1,
+   transactionType: "send"
+ }
+ console.log(summary)
 
+ type TransactionWithoutFee = Omit<FullTransaction, "fee">
 
+ const fee: TransactionWithoutFee = {
+   id: 1,
+   name: "Esther",
+   amount: 1500,
+   transactionType: "withdraw",
+ };
 
+ console.log(fee);
 
+type FeeByType = Record<TransactionType, number>
 
+const fees: FeeByType ={
+  send: 23,
+  withdraw: 30
+}
 
-
-
-
-
+console.log(fees)
