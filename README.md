@@ -20,3 +20,4 @@ Daily TypeScript practice while learning React + TypeScript for frontend develop
 - Functions in TypeScript
 - Enums
 - Generics intro
+- Utility Types: Partial, Pick, Omit & Record
