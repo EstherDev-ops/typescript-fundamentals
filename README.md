@@ -21,3 +21,9 @@ Daily TypeScript practice while learning React + TypeScript for frontend develop
 - Enums
 - Generics intro
 - Utility Types: Partial, Pick, Omit & Record
+
+### Day 4
+- Narrowing
+- Array & Tuples
+- Type Assertions
+- Unknown & Any
